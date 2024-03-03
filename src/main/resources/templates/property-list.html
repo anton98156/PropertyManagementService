@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Property</title>
-</head>
-<body>
-<div th:switch="${property}">
-    <h2 th:case="null">Нет объектов недвижимости!</h2>
-    <div th:case="*">
-        <h2>Property</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Address</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="property : ${property}">
-                <td th:text="${property.id}"></td>
-                <td th:text="${property.firstName}"></td>
-                <td th:text="${property.lastName}"></td>
-                <td><a th:href="@{property-update/{id}(id=${property.id})}">Edit</a></td>
-                <td><a th:href="@{property-delete/{id}(id=${property.id})}">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <p><a href="/property-create">Добавить новый</a></p>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Property</title>
+        
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+    
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div th:switch="${properties}">
+            <h2 th:case="null">Нет объектов недвижимости!</h2>
+            <div th:case="*">
+                <h2>Properties</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Address</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="prop : ${properties}">
+                            <td th:text="${prop.id}"></td>
+                            <td th:text="${prop.address}"></td>
+                            <td th:text="${prop.description}"></td>
+                            <td>
+                                <a th:href="@{/property-update/{id}(id=${prop.id})}" class="button">Edit</a>
+                                <a th:href="@{/property-delete/{id}(id=${prop.id})}" class="button">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><a href="/property-create">Добавить новый</a></p>
+            </div>
+        </div>
+    </body>
 </html>
+

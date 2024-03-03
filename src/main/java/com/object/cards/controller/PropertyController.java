@@ -35,6 +35,7 @@ public class PropertyController {
         propertyService.saveProperty(property);
         return "redirect:/properties";
     }
+    
     @GetMapping("property-delete/{id}")
     public String deleteProperty(@PathVariable("id") int id) {
         propertyService.deleteById(id);

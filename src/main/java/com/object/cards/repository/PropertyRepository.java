@@ -2,8 +2,12 @@ package com.object.cards.repository;
 
 import com.object.cards.entity.Property;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import java.sql.Statement;
+
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -31,8 +35,20 @@ public class PropertyRepository {
         }
 
         public Property save(Property property) {
-            String sql = "INSERT INTO propertyTable VALUES (NULL, ?, ?)";
-            jdbc.update(sql, property.getAddress(), property.getDescription());
+            String sql = "INSERT INTO propertyTable (address, description) VALUES (?, ?)";
+            GeneratedKeyHolder keyHolder = new GeneratedKeyHolder(); // Инициализируем ключ-контейнер для получения сгенерированного ключа
+
+            jdbc.update(connection -> {
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, property.getAddress());
+                ps.setString(2, property.getDescription());
+                return ps;
+            }, keyHolder);
+
+            int id = keyHolder.getKey().intValue(); // Получаем сгенерированный ключ
+
+            property.setId(id); // Устанавливаем сгенерированный ключ в объект Property
+
             return property;
         }
 

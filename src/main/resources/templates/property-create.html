@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create property</title>
+    <title>Добавить объект</title>
 </head>
 <body>
-<form action="#" th:action="@{/property-create}" th:object="${property}" method="post">
-    <label for="address">Address</label>
-    <input type="text" th:field="*{address}" id="address" placeholder="Address">
-    <label for="description">Description</label>
-    <input type="text" th:field="*{description}" id="description" placeholder="Description">
-    <input type="submit" value="Create Property">
-</form>
+    <h1 th:text="'Добавление нового объекта недвижимости'">Заголовок</h1>
+    <form action="#" th:action="@{/property-create}" th:object="${property}" method="post">
+        <label for="address">Адрес</label>
+        <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
+        <label for="description">Описание</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <input type="submit" value="Добавить">
+    </form>
 </body>
 </html>
