@@ -1,5 +1,7 @@
 package com.object.cards.entity;
 
+import java.util.Objects;
+
 public class Property {
 
     private int id;
@@ -28,6 +30,11 @@ public class Property {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, description);
     }
 
 }

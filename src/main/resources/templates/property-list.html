@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Property</title>
+</head>
+<body>
+<div th:switch="${property}">
+    <h2 th:case="null">Нет объектов недвижимости!</h2>
+    <div th:case="*">
+        <h2>Property</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="property : ${property}">
+                <td th:text="${property.id}"></td>
+                <td th:text="${property.firstName}"></td>
+                <td th:text="${property.lastName}"></td>
+                <td><a th:href="@{property-update/{id}(id=${property.id})}">Edit</a></td>
+                <td><a th:href="@{property-delete/{id}(id=${property.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/property-create">Добавить новый</a></p>
+</div>
+</body>
+</html>
