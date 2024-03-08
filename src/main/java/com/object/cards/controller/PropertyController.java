@@ -42,4 +42,10 @@ public class PropertyController {
         return "redirect:/properties";
     }
 
+    // @GetMapping("property-update/{id}")
+    // public String updateProperty(@PathVariable("id") int id) {
+    //     propertyService.updateById(id);
+    //     return "redirect:/properties";
+    // }
+
 }
