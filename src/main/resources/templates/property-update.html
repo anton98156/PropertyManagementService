@@ -2,21 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Обновить объект</title>
+    <title>Изменение объекта</title>
 </head>
 <body>
-<form action="#" th:action="@{/property-update}" th:object="${property}" method="post">
     <h1 th:text="'Обновление объекта недвижимости'">Заголовок</h1>
-    <label for="id">ID</label>
-    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
-    <br/>
-    <label for="address">Адрес</label>
-    <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
-    <br/>
-    <label for="description">Описание</label>
-    <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
-    <br/>
-    <input type="submit" value="Обновить">
-</form>
+    <form action="#" th:action="@{/property-update}" th:object="${property}" method="post">
+        <label for="id">ID</label>
+        <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+        <br/>
+        <label for="address">Адрес</label>
+        <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
+        <br/>
+        <label for="description">Описание</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <br/>
+        <input type="submit" value="Обновить">
+    </form>
+    <img src="/image_updating.png" th:src="@{/image_updating.png}" width="550" height="400"/>
 </body>
 </html>
