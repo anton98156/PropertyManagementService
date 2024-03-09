@@ -7,6 +7,7 @@ public class Property {
     private int id;
     private String address;
     private String description;
+    private int test;
 
     public int getId() {
         return id;
