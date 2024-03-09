@@ -36,16 +36,21 @@ public class PropertyController {
         return "redirect:/properties";
     }
     
-    @GetMapping("property-delete/{id}")
+    @GetMapping("/property-delete/{id}")
     public String deleteProperty(@PathVariable("id") int id) {
         propertyService.deleteById(id);
         return "redirect:/properties";
     }
 
-    // @GetMapping("property-update/{id}")
-    // public String updateProperty(@PathVariable("id") int id) {
-    //     propertyService.updateById(id);
-    //     return "redirect:/properties";
-    // }
+    @GetMapping("/property-update/{id}")
+    public String updatePropertyForm(Property property){
+        return "property-update";
+    }
+
+    @PostMapping("/property-update")
+    public String updateProperty(Property property, int id) {
+        propertyService.updateById(property, id);
+        return "redirect:/properties";
+    }
 
 }

@@ -5,13 +5,13 @@
     <title>Добавить объект</title>
 </head>
 <body>
-    <h1 th:text="'Объект недвижимости'">Заголовок</h1>
+    <h1 th:text="'Добавить объект недвижимости'">Заголовок</h1>
     <form action="#" th:action="@{/property-create}" th:object="${property}" method="post">
         <label for="address">Адрес</label>
         <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
         <label for="description">Описание</label>
         <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
-        <input type="submit" value="Сохранить">
+        <input type="submit" value="Добавить">
     </form>
 </body>
 </html>

@@ -9,39 +9,41 @@ import java.util.List;
 @Repository
 public class PropertyRepository {
 
-        private final JdbcTemplate jdbc;
+    private final JdbcTemplate jdbc;
 
-        public PropertyRepository(JdbcTemplate jdbc) {
-            this.jdbc = jdbc;
-        }
+    public PropertyRepository(JdbcTemplate jdbc) {
+        this.jdbc = jdbc;
+    }
 
-        public List<Property> findAll() {
+    public List<Property> findAll() {
 
-            String sql = "SELECT * FROM propertyTable";
+        String sql = "SELECT * FROM propertyTable";
 
-            RowMapper<Property> propertyRowMapper = (r, i) -> {
-                Property rowObject = new Property();
-                rowObject.setId(r.getInt("id"));
-                rowObject.setAddress(r.getString("address"));
-                rowObject.setDescription(r.getString("description"));
-                return rowObject;
-            };
+        RowMapper<Property> propertyRowMapper = (r, i) -> {
+            Property rowObject = new Property();
+            rowObject.setId(r.getInt("id"));
+            rowObject.setAddress(r.getString("address"));
+            rowObject.setDescription(r.getString("description"));
+            return rowObject;
+        };
 
-            return jdbc.query(sql, propertyRowMapper);
-        }
+        return jdbc.query(sql, propertyRowMapper);
+    }
 
-        public Property save(Property property) {
-            String sql = "INSERT INTO propertyTable (address, description) VALUES (?, ?)";
-            jdbc.update(sql, property.getAddress(), property.getDescription());
-            return property;
-        }
+    public Property save(Property property) {
+        String sql = "INSERT INTO propertyTable (address, description) VALUES (?, ?)";
+        jdbc.update(sql, property.getAddress(), property.getDescription());
+        return property;
+    }
 
-        public void deleteById(int id) {
-            String sql = "DELETE FROM propertyTable WHERE id=?";
-            jdbc.update(sql, id);
-        }
+    public void deleteById(int id) {
+        String sql = "DELETE FROM propertyTable WHERE id=?";
+        jdbc.update(sql, id);
+    }
 
-        public Property updateById(Property property, int id) {
-            return property;
-        }
+    public Property updateById(Property property, int id) {
+        String sql = "UPDATE propertyTable SET address = ?, description = ? WHERE id = ?";
+        jdbc.update(sql, property.getAddress(), property.getDescription(), id);
+        return property;
+    }
 }

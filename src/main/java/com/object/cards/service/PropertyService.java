@@ -24,4 +24,8 @@ public class PropertyService {
     public void deleteById(int id) {
         propertyRepository.deleteById(id);
     }
+
+    public void updateById(Property property, int id) {
+        propertyRepository.updateById(property, id);
+    }
 }
