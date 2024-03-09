@@ -2,8 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
-        <title>Property</title>
-        
+        <title>Недвижимость</title>
         <style>
             table {
                 border-collapse: collapse;
@@ -24,34 +23,31 @@
         </style>
     </head>
     <body>
-        <div th:switch="${properties}">
-            <h2 th:case="null">Нет объектов недвижимости!</h2>
-            <div th:case="*">
-                <h2>Properties</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Address</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="prop : ${properties}">
-                            <td th:text="${prop.id}"></td>
-                            <td th:text="${prop.address}"></td>
-                            <td th:text="${prop.description}"></td>
-                            <td>
-                                <a th:href="@{/property-update/{id}(id=${prop.id})}" class="button">Edit</a>
-                                <a th:href="@{/property-delete/{id}(id=${prop.id})}" class="button">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><a href="/property-create">Добавить новый</a></p>
-            </div>
+        <h2  align="center">Объекты недвижимости</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Адрес</th>
+                    <th>Описание</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prop : ${properties}">
+                    <td th:text="${prop.id}"></td>
+                    <td th:text="${prop.address}"></td>
+                    <td th:text="${prop.description}"></td>
+                    <td>
+                        <a th:href="@{/property-update/{id}(id=${prop.id})}" class="button">Обновить</a>
+                        <a th:href="@{/property-delete/{id}(id=${prop.id})}" class="button">Удалить</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${#lists.isEmpty(properties)}">
+            <p style="font-size: 25px;">Нет объектов недвижимости!</p>
         </div>
+        <p><a href="/property-create">Добавить новый</a></p>
     </body>
 </html>
-

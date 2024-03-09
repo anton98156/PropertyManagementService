@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить объект</title>
+    <title>Новый объект</title>
 </head>
 <body>
-    <h1 th:text="'Добавить объект недвижимости'">Заголовок</h1>
+    <h1 th:text="'Добавление объекта недвижимости'">Заголовок</h1>
     <form action="#" th:action="@{/property-create}" th:object="${property}" method="post">
         <label for="address">Адрес</label>
         <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
