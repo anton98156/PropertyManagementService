@@ -18,6 +18,7 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+    // Вывод отчета о всех объектах недвижимости пользователю.
     @GetMapping("/properties")
     public String findAll(Model model){
         List<Property> properties = propertyService.findAll();
@@ -25,28 +26,33 @@ public class PropertyController {
         return "property-list";
     }
 
+    // Переход на форму создания нового объекта.
     @GetMapping("/property-create")
     public String createPropertyForm(Property property){
         return "property-create";
     }
 
+    // Создание объекта недвижимости.
     @PostMapping("/property-create")
     public String createProperty(Property property){
         propertyService.saveProperty(property);
         return "redirect:/properties";
     }
     
+    // Удаление объекта недвижимости.
     @GetMapping("/property-delete/{id}")
     public String deleteProperty(@PathVariable("id") int id) {
         propertyService.deleteById(id);
         return "redirect:/properties";
     }
 
+    // Переход на форму обновления объекта недвижимости.
     @GetMapping("/property-update/{id}")
     public String updatePropertyForm(Property property){
         return "property-update";
     }
 
+    // Обновление объекта недвижимости.
     @PostMapping("/property-update")
     public String updateProperty(Property property, int id) {
         propertyService.updateById(property, id);

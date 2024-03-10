@@ -15,6 +15,7 @@ public class PropertyRepository {
         this.jdbc = jdbc;
     }
 
+    // Вывод всех объектов недвижимости в отчёт.
     public List<Property> findAll() {
 
         String sql = "SELECT * FROM propertyTable";
@@ -30,17 +31,20 @@ public class PropertyRepository {
         return jdbc.query(sql, propertyRowMapper);
     }
 
+    // Сохранение нового объекта недвижимости в БД.
     public Property save(Property property) {
         String sql = "INSERT INTO propertyTable (address, description) VALUES (?, ?)";
         jdbc.update(sql, property.getAddress(), property.getDescription());
         return property;
     }
 
+    // Удаление объекта недвижимости из БД.
     public void deleteById(int id) {
         String sql = "DELETE FROM propertyTable WHERE id=?";
         jdbc.update(sql, id);
     }
 
+    // Обновление (редактирование) данных объекта недвижимости.
     public Property updateById(Property property, int id) {
         String sql = "UPDATE propertyTable SET address = ?, description = ? WHERE id = ?";
         jdbc.update(sql, property.getAddress(), property.getDescription(), id);

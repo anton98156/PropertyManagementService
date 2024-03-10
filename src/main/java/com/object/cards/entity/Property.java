@@ -3,7 +3,8 @@ package com.object.cards.entity;
 import java.util.Objects;
 
 public class Property {
-
+    
+    // Описание объекта недвижимости.
     private int id;
     private String address;
     private String description;

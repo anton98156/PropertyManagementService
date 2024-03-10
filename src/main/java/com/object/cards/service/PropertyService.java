@@ -7,7 +7,10 @@ import com.object.cards.entity.Property;
 
 @Service
 public class PropertyService {
+
     private final PropertyRepository propertyRepository;
+
+    // Релазиация методов PropertyRepository.
 
     public PropertyService(PropertyRepository propertyRepository) {
         this.propertyRepository = propertyRepository;
