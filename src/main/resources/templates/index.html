@@ -9,8 +9,9 @@
 <body>
     <div>
         <h1 align="center">Система управления субаредной недвижимости</h1>
-        <p><a href="/properties">Отчет по объектам недвижимости</a></p>
+        <p><a href="/properties" class="button" id="mainButton">Отчет по объектам недвижимости</a></p>
     </div>
+    <script th:src="@{/buttonStyle.js}"></script>
     <div class="video-container">
         <video th:autoplay="autoplay" th:loop="loop" muted>
             <source th:src="@{/home_page.mp4}" th:type="'video/mp4'">
