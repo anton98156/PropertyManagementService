@@ -14,11 +14,11 @@ function styleButton(button) {
 
     // Динамическое изменение стиля кнопки при наведении курсора на кнопку.
     button.addEventListener('mouseenter', function() {
-        this.style.textShadow = '0 0 70px red'; // Свечение при наведении курсора
+        this.style.textShadow = '0 0 70px red'; // Свечение при наведении курсора.
         this.style.backgroundColor = 'darkGrey'; // Динамическое изменение цвета при взаимодействии с кнопкой.
     });
     button.addEventListener('mouseleave', function() {
-        this.style.textShadow = 'none'; // Удаление свечения при уходе курсора
+        this.style.textShadow = 'none'; // Удаление свечения при уходе курсора.
         this.style.backgroundColor = 'black'; // Возвращение исходного цвета кнопки.
     });
 }
