@@ -21,6 +21,7 @@
                 <td th:text="${prop.address}"></td>
                 <td th:text="${prop.description}"></td>
                 <td>
+                    <a th:href="@{/property-open/{id}(id=${prop.id})}" class="button">Открыть</a>
                     <a th:href="@{/property-update/{id}(id=${prop.id})}" class="button">Обновить</a>
                     <a th:href="@{/property-delete/{id}(id=${prop.id})}" class="button">Удалить</a>
                 </td>

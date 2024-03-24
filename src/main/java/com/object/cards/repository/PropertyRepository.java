@@ -25,16 +25,35 @@ public class PropertyRepository {
             rowObject.setId(r.getInt("id"));
             rowObject.setAddress(r.getString("address"));
             rowObject.setDescription(r.getString("description"));
+            rowObject.setSpace(r.getInt("space"));
+            rowObject.setSublease(r.getBoolean("sublease"));
             return rowObject;
         };
 
         return jdbc.query(sql, propertyRowMapper);
     }
 
+    // Метод для поиска объекта недвижимости по ID.
+    public Property findById(Property property, int id) {
+
+        String sql = "SELECT * FROM propertyTable WHERE id = ?";
+
+        RowMapper<Property> propertyRowMapper = (r, i) -> {
+            property.setId(r.getInt("id"));
+            property.setAddress(r.getString("address"));
+            property.setDescription(r.getString("description"));
+            property.setSpace(r.getInt("space"));
+            property.setSublease(r.getBoolean("sublease"));
+            return property;
+        };
+
+        return jdbc.queryForObject(sql, propertyRowMapper, id);
+    }
+
     // Сохранение нового объекта недвижимости в БД.
     public Property save(Property property) {
-        String sql = "INSERT INTO propertyTable (address, description) VALUES (?, ?)";
-        jdbc.update(sql, property.getAddress(), property.getDescription());
+        String sql = "INSERT INTO propertyTable (address, description, space, sublease) VALUES (?, ?, ?, ?)";
+        jdbc.update(sql, property.getAddress(), property.getDescription(), property.getSpace(), property.getSublease());
         return property;
     }
 
@@ -46,8 +65,8 @@ public class PropertyRepository {
 
     // Обновление (редактирование) данных объекта недвижимости.
     public Property updateById(Property property, int id) {
-        String sql = "UPDATE propertyTable SET address = ?, description = ? WHERE id = ?";
-        jdbc.update(sql, property.getAddress(), property.getDescription(), id);
+        String sql = "UPDATE propertyTable SET address = ?, description = ?, space = ?, sublease = ? WHERE id = ?";
+        jdbc.update(sql, property.getAddress(), property.getDescription(), property.getSpace(), property.getSublease(), id);
         return property;
     }
 }

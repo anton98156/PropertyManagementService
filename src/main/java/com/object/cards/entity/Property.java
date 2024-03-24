@@ -8,6 +8,8 @@ public class Property {
     private int id;
     private String address;
     private String description;
+    private int space;
+    private boolean sublease;
 
     public int getId() {
         return id;
@@ -33,9 +35,25 @@ public class Property {
         this.description = description;
     }
 
+    public int getSpace() {
+        return space;
+    }
+
+    public void setSpace(int space) {
+        this.space = space;
+    }
+
+    public boolean getSublease() {
+        return sublease;
+    }
+
+    public void setSublease(boolean sublease) {
+        this.sublease = sublease;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, address, description);
+        return Objects.hash(id, address, description, space, sublease);
     }
 
 }

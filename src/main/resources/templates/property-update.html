@@ -16,6 +16,12 @@
         <label for="description">Описание</label>
         <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
         <br/>
+        <label for="space">Площадь</label>
+        <input type="text" th:field="*{space}" id="space" placeholder="введите площадь">
+        <br/>
+        <label for="sublease">В субаренде</label>
+        <input type="checkbox" th:field="*{sublease}" id="sublease">
+        <br/>
         <input type="submit" value="Обновить">
     </form>
     <img src="/image_updating.png" th:src="@{/image_updating.png}" width="550" height="400"/>

@@ -26,6 +26,19 @@ public class PropertyController {
         return "property-list";
     }
 
+    // Переход на форму просмотра объекта.
+    @GetMapping("/property-open/{id}")
+    public String openPropertyForm(Property property) {
+        return "property-open";
+    }
+
+    // Просмотр объекта недвижимости.
+    @PostMapping("/property-open")
+    public String openProperty(Property property, int id) {
+        propertyService.findById(property, id);
+        return "redirect:/properties";
+    }
+
     // Переход на форму создания нового объекта.
     @GetMapping("/property-create")
     public String createPropertyForm(Property property){
@@ -38,13 +51,7 @@ public class PropertyController {
         propertyService.saveProperty(property);
         return "redirect:/properties";
     }
-    
-    // Удаление объекта недвижимости.
-    @GetMapping("/property-delete/{id}")
-    public String deleteProperty(@PathVariable("id") int id) {
-        propertyService.deleteById(id);
-        return "redirect:/properties";
-    }
+
 
     // Переход на форму обновления объекта недвижимости.
     @GetMapping("/property-update/{id}")
@@ -56,6 +63,13 @@ public class PropertyController {
     @PostMapping("/property-update")
     public String updateProperty(Property property, int id) {
         propertyService.updateById(property, id);
+        return "redirect:/properties";
+    }
+
+    // Удаление объекта недвижимости.
+    @GetMapping("/property-delete/{id}")
+    public String deleteProperty(@PathVariable("id") int id) {
+        propertyService.deleteById(id);
         return "redirect:/properties";
     }
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Недвижимость</title>
+</head>
+<body>
+    <h1 align="center">Объект недвижимости</h1>
+    <div th:each="prop : ${properties}">
+        <td th:text="${prop.id}"></td>
+        <td th:text="${prop.address}"></td>
+        <td th:text="${prop.description}"></td>
+        <hr> <!-- Горизонтальная линия для разделения записей -->
+    </div>
+    <p><a href="/property-list" class="button" id="mainButton">Вернуться к отчету</a></p>
+    <script th:src="@{/buttonStyle.js}" defer></script>
+</body>
+</html>

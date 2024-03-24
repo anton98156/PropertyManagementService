@@ -9,8 +9,16 @@
     <form action="#" th:action="@{/property-create}" th:object="${property}" method="post">
         <label for="address">Адрес</label>
         <input type="text" th:field="*{address}" id="address" placeholder="введите адрес">
+        <br/>
         <label for="description">Описание</label>
         <input type="text" th:field="*{description}" id="description" placeholder="введите описание">
+        <br/>
+        <label for="space">Площадь</label>
+        <input type="text" th:field="*{space}" id="space" placeholder="введите площадь">
+        <br/>
+        <label for="sublease">В субаренде</label>
+        <input type="checkbox" th:field="*{sublease}" id="sublease">
+        <br/>
         <input type="submit" value="Добавить">
     </form>
     <img src="/image_creation.webp" th:src="@{/image_creation.webp}" width="550" height="400"/>
