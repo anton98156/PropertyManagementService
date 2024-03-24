@@ -34,17 +34,18 @@ public class PropertyRepository {
     }
 
     // Метод для поиска объекта недвижимости по ID.
-    public Property findById(Property property, int id) {
+    public Property findById(int id) {
 
         String sql = "SELECT * FROM propertyTable WHERE id = ?";
 
         RowMapper<Property> propertyRowMapper = (r, i) -> {
-            property.setId(r.getInt("id"));
-            property.setAddress(r.getString("address"));
-            property.setDescription(r.getString("description"));
-            property.setSpace(r.getInt("space"));
-            property.setSublease(r.getBoolean("sublease"));
-            return property;
+            Property rowObject = new Property();
+            rowObject.setId(r.getInt("id"));
+            rowObject.setAddress(r.getString("address"));
+            rowObject.setDescription(r.getString("description"));
+            rowObject.setSpace(r.getInt("space"));
+            rowObject.setSublease(r.getBoolean("sublease"));
+            return rowObject;
         };
 
         return jdbc.queryForObject(sql, propertyRowMapper, id);

@@ -20,8 +20,8 @@ public class PropertyService {
         return propertyRepository.findAll();
     }
 
-    public Property findById(Property property, int id){
-        return propertyRepository.findById(property, id);
+    public Property findById(int id){
+        return propertyRepository.findById(id);
     }
 
     public Property saveProperty(Property property){

@@ -28,15 +28,16 @@ public class PropertyController {
 
     // Переход на форму просмотра объекта.
     @GetMapping("/property-open/{id}")
-    public String openPropertyForm(Property property) {
+    public String openPropertyForm() {
         return "property-open";
     }
 
     // Просмотр объекта недвижимости.
     @PostMapping("/property-open")
-    public String openProperty(Property property, int id) {
-        propertyService.findById(property, id);
-        return "redirect:/properties";
+    public String openProperty(Model model, @PathVariable("id") int id) {
+        Property property = propertyService.findById(id);
+        model.addAttribute("property", property);
+        return "redirect:/property";
     }
 
     // Переход на форму создания нового объекта.
