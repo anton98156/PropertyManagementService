@@ -33,7 +33,7 @@ public class PropertyRepository {
         return jdbc.query(sql, propertyRowMapper);
     }
 
-    // Метод для поиска объекта недвижимости по ID.
+    // Метод поиска объекта недвижимости по ID.
     public Property findById(int id) {
 
         String sql = "SELECT * FROM propertyTable WHERE id = ?";
@@ -58,16 +58,16 @@ public class PropertyRepository {
         return property;
     }
 
-    // Удаление объекта недвижимости из БД.
-    public void deleteById(int id) {
-        String sql = "DELETE FROM propertyTable WHERE id=?";
-        jdbc.update(sql, id);
-    }
-
     // Обновление (редактирование) данных объекта недвижимости.
     public Property updateById(Property property, int id) {
         String sql = "UPDATE propertyTable SET address = ?, description = ?, space = ?, sublease = ? WHERE id = ?";
         jdbc.update(sql, property.getAddress(), property.getDescription(), property.getSpace(), property.getSublease(), id);
         return property;
+    }
+
+    // Удаление объекта недвижимости из БД.
+    public void deleteById(int id) {
+        String sql = "DELETE FROM propertyTable WHERE id=?";
+        jdbc.update(sql, id);
     }
 }

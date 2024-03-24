@@ -28,11 +28,11 @@ public class PropertyService {
         return propertyRepository.save(property);
     }
 
-    public void deleteById(int id) {
-        propertyRepository.deleteById(id);
-    }
-
     public void updateById(Property property, int id) {
         propertyRepository.updateById(property, id);
+    }
+
+    public void deleteById(int id) {
+        propertyRepository.deleteById(id);
     }
 }

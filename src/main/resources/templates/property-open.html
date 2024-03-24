@@ -6,23 +6,17 @@
 </head>
 <body>
     <h1 align="center">Объект недвижимости</h1>
-    <table id="tableContainer">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Адрес</th>
-                <th>Описание</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="prop : ${property}">
-                <td th:text="${prop.id}"></td>
-                <td th:text="${prop.address}"></td>
-                <td th:text="${prop.description}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <p><a href="/properties" class="button" id="mainButton">Вернуться к отчету</a></p>
-    <script th:src="@{/buttonStyle.js}" defer></script>
+    <div>
+        <div th:each="prop : ${property}">
+            <p>ID: <span th:text="${prop.id}"></span></p>
+            <p>Адрес: <span th:text="${prop.address}"></span></p>
+            <p>Описание: <span th:text="${prop.description}"></span></p>
+            <p>Плодащь для субаренды: <span th:text="${prop.space}"></span></p>
+            <p>В субаренде: <input type="checkbox" th:if="${prop.sublease}" checked="checked" disabled>
+            <input type="checkbox" th:unless="${prop.sublease}" disabled></p>
+        </div>
+    </div>
+    <p><a href="/properties" class="button" id="simpleButton">Вернуться к отчету</a></p>
+    <img src="/object_page.png" th:src="@{/object_page.png}" width="530" height="400"/>
 </body>
 </html>

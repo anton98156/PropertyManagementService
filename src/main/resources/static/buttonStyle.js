@@ -1,4 +1,4 @@
-// Объявление переменной главной кнопки.
+// Объявление переменных.
 const mainButton = document.getElementById('mainButton');
 
 // Метод стилизации кнопки.
@@ -23,5 +23,5 @@ function styleButton(button) {
     });
 }
 
-// Вызов функции для стилизации кнопки по идентификатору.
+// Вызов функции для стилизации.
 styleButton(mainButton);
