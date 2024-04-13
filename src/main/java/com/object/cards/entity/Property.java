@@ -1,7 +1,5 @@
 package com.object.cards.entity;
 
-import java.util.Objects;
-
 public class Property {
     
     // Описание объекта недвижимости.
@@ -49,11 +47,6 @@ public class Property {
 
     public void setSublease(boolean sublease) {
         this.sublease = sublease;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, address, description, space, sublease);
     }
 
 }
