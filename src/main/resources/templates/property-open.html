@@ -7,14 +7,12 @@
 <body>
     <h1 align="center">Объект недвижимости</h1>
     <div>
-        <div th:each="prop : ${property}">
-            <p>ID: <span th:text="${prop.id}"></span></p>
-            <p>Адрес: <span th:text="${prop.address}"></span></p>
-            <p>Описание: <span th:text="${prop.description}"></span></p>
-            <p>Плодащь для субаренды: <span th:text="${prop.space}"></span></p>
-            <p>В субаренде: <input type="checkbox" th:if="${prop.sublease}" checked="checked" disabled>
-            <input type="checkbox" th:unless="${prop.sublease}" disabled></p>
-        </div>
+        <p>ID: <span th:text="${property.id}"></span></p>
+        <p>Адрес: <span th:text="${property.address}"></span></p>
+        <p>Описание: <span th:text="${property.description}"></span></p>
+        <p>Плодащь для субаренды: <span th:text="${property.space}"></span></p>
+        <p>В субаренде: <input type="checkbox" th:if="${property.sublease}" checked="checked" disabled>
+        <input type="checkbox" th:unless="${property.sublease}" disabled></p>
     </div>
     <p><a href="/properties" class="button" id="simpleButton">Вернуться к отчету</a></p>
     <img src="/object_page.png" th:src="@{/object_page.png}" width="530" height="400"/>
