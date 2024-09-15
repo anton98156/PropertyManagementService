@@ -1,4 +1,4 @@
-package com.object.cards.controller;
+package com.object.cards.webcontroller;
 
 import java.util.List;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.object.cards.repository;
+package com.object.cards.storage;
 
 import com.object.cards.entity.Property;
 import org.springframework.jdbc.core.RowMapper;

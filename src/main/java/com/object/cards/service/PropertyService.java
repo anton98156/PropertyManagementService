@@ -2,8 +2,9 @@ package com.object.cards.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.object.cards.repository.PropertyRepository;
+
 import com.object.cards.entity.Property;
+import com.object.cards.storage.PropertyRepository;
 
 @Service
 public class PropertyService {
